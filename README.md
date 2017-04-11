@@ -30,4 +30,4 @@ Ng Plugin
 
 ## License
 
-Mit
+[MIT License](LICENSE)
