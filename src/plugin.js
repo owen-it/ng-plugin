@@ -3,32 +3,32 @@
 
     function __module__() 
     {
-    var hijacked = ng.apply(this, arguments);
+        var hijacked = ng.apply(this, arguments);
 
-    function use () {
-        var plugin = arguments[0]
+        function use () {
+            var plugin = arguments[0]
 
-        if (plugin.installed) {
-        return
+            if (plugin.installed) {
+            return
+            }
+
+            var args = [].slice.call(arguments, 1)
+
+            if (typeof plugin.install === 'function') {
+                plugin.install.apply(plugin, args)
+            } else if (typeof plugin === 'function') {
+                plugin.apply(null, args)
+            }
+
+            plugin.install  = true
+
+            return hijacked
+            
         }
 
-        var args = [].slice.call(arguments, 1)
+        hijacked.use = use;
 
-        if (typeof plugin.install === 'function') {
-            plugin.install.apply(plugin, args)
-        } else if (typeof plugin === 'function') {
-            plugin.apply(null, args)
-        }
-
-        plugin.install  = true
-
-        return this
-        
-    }
-
-    hijacked.use = use;
-
-    return hijacked;
+        return hijacked;
     }
 
     angular.module = __module__;
