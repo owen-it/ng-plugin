@@ -1,8 +1,8 @@
 {
   "name": "ng-plugin",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Use plugins with angular",
-  "main": "src/index.js",
+  "main": "src/plugin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

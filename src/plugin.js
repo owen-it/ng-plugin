@@ -14,6 +14,8 @@
 
             var args = [].slice.call(arguments, 1)
 
+            args.unshift(hijacked)
+
             if (typeof plugin.install === 'function') {
                 plugin.install.apply(plugin, args)
             } else if (typeof plugin === 'function') {
@@ -32,5 +34,6 @@
     }
 
     angular.module = __module__;
+    
 })(angular)
 
