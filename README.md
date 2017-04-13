@@ -43,7 +43,7 @@ Use plugins by calling the angular.module('some-module').use() global method:
     angular.module('app', []).use( filters )
     
     // <p>{{ 'My first plugin' | kebelCase }}</p>
-    // my-first-plugin
+    // => my-first-plugin
 ```
 
 ## License
