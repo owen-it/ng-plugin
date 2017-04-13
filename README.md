@@ -20,16 +20,13 @@ A plugin should expose an install method. The method will be called with the Mod
     
     import { lowerCase, lowerFirst, kebelCase } from 'lodash'
 
-    const filtersPlugin = {
-        install: function (module) 
-        {
-             module.filter('lowerCase', function () {...} )
-             module.filter('lowerFirst', function () {...} )
-             module.filter('kebelCase', function () {...} )
-        }
+    export default function install (module) 
+    {
+         module.filter('lowerCase', function () {...} )
+         module.filter('lowerFirst', function () {...} )
+         module.filter('kebelCase', function () {...} )
     }
-    
-    export default filtersPlugin
+
 ```
 
 ## Using a plugin
