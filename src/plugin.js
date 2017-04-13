@@ -24,7 +24,7 @@
                 plugin.apply(null, args)
             }
 
-            plugin.install  = true
+            plugin.installed  = true
 
             return hijacked
             
