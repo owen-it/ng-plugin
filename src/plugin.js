@@ -5,11 +5,13 @@
     {
         var hijacked = ng.apply(this, arguments);
 
+        if(hijacked.use) return hijacked;
+
         function use () {
             var plugin = arguments[0]
 
             if (plugin.installed) {
-            return
+                return hijacked
             }
 
             var args = [].slice.call(arguments, 1)
