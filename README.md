@@ -16,15 +16,20 @@ Plugins usually add global-level functionality to module Angular. There is no st
 A plugin should expose an install method. The method will be called with the Module Angular constructor as the first argument, along with possible options:
 
 ```js
-    // chat.plugin.js
-    export function install (module, options) {
+    // filters.plugin.js
     
-      module.filter('color', function () {...} )
-      
-      module.component('messages', {...})
-      
-      module.value('Placeholder', options.placeholder)
+    import { lowerCase, lowerFirst, kebelCase } from 'lodash'
+
+    const filtersPlugin = {
+        install: function (module) 
+        {
+             module.filter('lowerCase', function () {...} )
+             module.filter('lowerFirst', function () {...} )
+             module.filter('kebelCase', function () {...} )
+        }
     }
+    
+    export default filtersPlugin
 ```
 
 ## Using a plugin
@@ -33,11 +38,14 @@ Use plugins by calling the angular.module('some-module').use() global method:
 
 ```js
     // app.js
-    import * as angular from 'angular'
-    import chat from 'chat.plugin.js'
+    import 'angular'
     import 'ng-plugin'
     
-    angular.module('app', []).use( chat )
+    import filters from 'filters.plugin.js'
+   
+    angular.module('app', []).use( filters )
+    
+    // <p>{{ 'My first plugin' | kebelCase }}</p>
 ```
 
 ## License
